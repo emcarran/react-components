@@ -47,7 +47,6 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(34);
 	
 	//declaring the person component
@@ -72,8 +71,20 @@
 	    );
 	};
 	
+	var PersonList = function PersonList() {
+	    var people = [];
+	    for (var i = 0; i < 5; i++) {
+	        people.push(React.createElement(Person, null));
+	    }
+	    return React.createElement(
+	        'div',
+	        { className: 'person-list' },
+	        people
+	    );
+	};
+	
 	document.addEventListener('DOMContentLoaded', function () {
-	    ReactDOM.render(React.createElement(Person, null), document.getElementById('app'));
+	    ReactDOM.render(React.createElement(PersonList, null), document.getElementById('app'));
 	});
 
 /***/ },

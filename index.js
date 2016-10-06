@@ -1,5 +1,4 @@
 var React = require('react');
-var React = require('react');
 var ReactDOM = require('react-dom');
 
 //declaring the person component
@@ -18,7 +17,18 @@ var Person = function() {
     );
 };
 
+var PersonList = function() {
+    var people = [];
+    for (var i=0; i<5; i++) {
+        people.push(<Person />);
+    }
+    return (
+        <div className="person-list">
+            {people}
+        </div>
+    );
+};
 
 document.addEventListener('DOMContentLoaded', function() {
-    ReactDOM.render(<Person/>, document.getElementById('app'));
+    ReactDOM.render(<PersonList/>, document.getElementById('app'));
 });
