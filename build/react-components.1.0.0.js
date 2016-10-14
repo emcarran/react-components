@@ -50,24 +50,38 @@
 	var ReactDOM = __webpack_require__(34);
 	
 	//declaring the person component
-	var Person = function Person(props) {
-	    return React.createElement(
-	        'div',
-	        { className: 'person' },
-	        React.createElement(
-	            'div',
-	            { className: 'person-name' },
-	            props.name
-	        ),
-	        React.createElement('img', { className: 'person-img', src: props.imageUrl }),
-	        React.createElement(
-	            'div',
-	            { className: 'person-job' },
-	            props.job
-	        )
-	    );
-	};
+	var Person = React.createClass({
+	    displayName: 'Person',
 	
+	    getInitialState: function getInitialState() {
+	        return {
+	            highlight: false
+	        };
+	    },
+	    onClick: function onClick() {
+	        this.setState({
+	            highlight: !this.state.highlight
+	        });
+	    },
+	    render: function render() {
+	        var classes = 'person ' + (this.state.highlight ? 'highlight' : '');
+	        return React.createElement(
+	            'div',
+	            { className: classes, onClick: this.onClick },
+	            React.createElement(
+	                'div',
+	                { className: 'person-name' },
+	                this.props.name
+	            ),
+	            React.createElement('img', { className: 'person-img', src: this.props.imageUrl }),
+	            React.createElement(
+	                'div',
+	                { className: 'person-job' },
+	                this.props.job
+	            )
+	        );
+	    }
+	});
 	var PersonList = function PersonList() {
 	    return React.createElement(
 	        'div',
